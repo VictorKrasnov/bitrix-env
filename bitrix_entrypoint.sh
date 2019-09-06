@@ -22,3 +22,6 @@ if [[ -z $( localectl status | grep ru) ]]; then
         localectl set-locale LANG=$(localectl list-locales | grep ru)
      fi
 fi
+
+# start Bitrix Environment menu
+bash -c /root/menu.sh
