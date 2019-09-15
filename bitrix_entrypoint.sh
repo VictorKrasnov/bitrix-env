@@ -1,6 +1,11 @@
 # install Bitrix-env
 if [[ ! -d "/opt/webdir" ]]; then
   echo "Installing Bitrix Environment..."
+
+  if [[ -f /root/docker-backup/.my.cnf ]]; then
+    cp /root/docker-backup/.my.cnf /root/.my.cnf
+  fi
+
   bash -c /opt/bitrix-env.sh
 fi
 
@@ -29,6 +34,12 @@ if [[ -z $(cat /etc/resolv.conf | grep 8.8.8.8) ]]; then
 fi
 if [[ -z $(cat /etc/resolv.conf | grep 8.8.4.4) ]]; then
   echo "nameserver 8.8.4.4" >>/etc/resolv.conf
+fi
+
+# make copy of /root/.my.cnf
+mkdir -p /root/docker-backup
+if [[ ! -f /root/docker-backup/.my.cnf ]]; then
+  cp /root/.my.cnf /root/docker-backup/.my.cnf
 fi
 
 # start Bitrix Environment menu
