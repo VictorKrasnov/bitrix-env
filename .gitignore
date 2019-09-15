@@ -1,3 +1,4 @@
 /etc
 /mysql
-/ext_www/*
+/ext_www
+/root
