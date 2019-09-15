@@ -1,5 +1,3 @@
-/nginx
-/httpd
+/etc
 /mysql
-/ext_www
-/www
+/ext_www/*
