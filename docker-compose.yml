@@ -1,0 +1,36 @@
+version: '3'
+services:
+  webslon-bitrix-env:
+    container_name: webslon-bitrix-env
+    image: webslon/bitrix-env:latest
+    ports:
+      - '80:80'
+      - '443:443'
+      - '3306:3306'
+    volumes:
+      - './www:/home/bitrix/www'
+      - './ext_www:/home/bitrix/ext_www'
+      - './etc/nginx:/etc/nginx'
+      - './etc/httpd:/etc/httpd'
+      - './etc/php.d:/etc/php.d'
+      - './mysql:/var/lib/mysql'
+      - './root/docker-backup:/root/docker-backup'
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    privileged: true
+    tmpfs:
+      - /run
+      - /run/lock
+    environment:
+      XDEBUG_CONFIG: "remote_host=192.168.220.1 remote_enable=1"
+      PHP_IDE_CONFIG: "serverName=Docker"
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.220.0/28
