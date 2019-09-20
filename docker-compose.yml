@@ -8,13 +8,13 @@ services:
       - '443:443'
       - '3306:3306'
     volumes:
-      - './www:/home/bitrix/www'
-      - './ext_www:/home/bitrix/ext_www'
-      - './etc/nginx:/etc/nginx'
-      - './etc/httpd:/etc/httpd'
-      - './etc/php.d:/etc/php.d'
-      - './mysql:/var/lib/mysql'
-      - './root/docker-backup:/root/docker-backup'
+      - './www:/home/bitrix/www:cached'
+      - './ext_www:/home/bitrix/ext_www:cached'
+      - './etc/nginx:/etc/nginx:cached'
+      - './etc/httpd:/etc/httpd:cached'
+      - './etc/php.d:/etc/php.d:cached'
+      - './mysql:/var/lib/mysql:cached'
+      - './root/docker-backup:/root/docker-backup:cached'
     dns:
       - 8.8.8.8
       - 8.8.4.4

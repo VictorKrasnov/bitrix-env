@@ -1,3 +1,12 @@
+# functions
+function mkdirBitrixFolder {
+  if [ ! -d "$1" ]; then
+    mkdir "$1"
+    chmod 755 "$1"
+    chown bitrix:bitrix "$1"
+  fi
+}
+
 # install Bitrix-env
 if [[ ! -d "/opt/webdir" ]]; then
   echo "Installing Bitrix Environment..."
@@ -10,6 +19,16 @@ if [[ ! -d "/opt/webdir" ]]; then
 
   find /home/bitrix -type d -print0 | xargs -0 chmod 755
   find /home/bitrix -type f -print0 | xargs -0 chmod 644
+
+  # creating sessions paths
+  mkdirBitrixFolder /tmp/php_sessions
+  mkdirBitrixFolder /tmp/php_sessions/ext_www
+
+  CONFIG_FILE_NAMES=$(ls /etc/httpd/bx/conf | grep bx_ext | cut -c 8- | rev | cut -c 6- | rev)
+  for FILE_NAME in $CONFIG_FILE_NAMES
+  do
+    mkdirBitrixFolder "/tmp/php_sessions/ext_www/$FILE_NAME"
+  done
 fi
 
 # configure XDebug
