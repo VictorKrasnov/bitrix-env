@@ -37,6 +37,10 @@
     Произойдет запуск установки Bitrix Environment. Процесс может занимать от 10 до 20 минут.
     Повторный запуск этой же команды приведет к залогиниванию в контейнер и запуску меню Bitrix Environment (повторной установки не произойдет).
 
+# Прочее
+
+Подключение x-debug - сейчас в разработке.
+
 # Источники
 1. [Денис Бондарь. PhpStorm + Docker + Xdebug](https://blog.denisbondar.com/post/phpstorm_docker_xdebug)
 1. [Документация по Docker. Инструкция по установке Centos](https://docs.docker.com/samples/library/centos/)
