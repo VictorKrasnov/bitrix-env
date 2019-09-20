@@ -1,13 +1,9 @@
 # Установка docker для MacOS
 
-1.  Устанавливаем Homebrew, если еще не установлен: https://brew.sh
 1.  Ставим doker:
-    ```bash
-    brew install docker docker-compose docker-machine
-    brew cask install docker
-    ```
-1.  Можно также поставить https://dockstation.io и Kinematic.
-1.  Если гит еще не был установлен, тогда делаем:
+    - Инструкция (на английском): https://docs.docker.com/docker-for-mac/install/
+1.  Можно также поставить Kinematic или https://dockstation.io для визуального управления контейнерами.
+1.  Если гит еще не был установлен (может понадобиться в инструкции по установке Bitrix Environment ниже), тогда делаем:
     ```bash
     xcode-select --install
     ```

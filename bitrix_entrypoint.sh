@@ -7,6 +7,9 @@ if [[ ! -d "/opt/webdir" ]]; then
   fi
 
   bash -c /opt/bitrix-env.sh
+
+  find /home/bitrix -type d -print0 | xargs -0 chmod 755
+  find /home/bitrix -type f -print0 | xargs -0 chmod 644
 fi
 
 # configure XDebug
