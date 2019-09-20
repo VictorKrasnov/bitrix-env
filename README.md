@@ -10,7 +10,7 @@
 
 # Установка Bitrix Environment под Docker
 
-Ставим этот образ: https://hub.docker.com/u/viktorkrasnov (шаги описаны ниже):
+Ставим этот образ: https://hub.docker.com/r/webslon/bitrix-env (шаги описаны ниже):
 
 1.  Создаем папку для docker-compose и переходим в нее, например:
     ```bash
