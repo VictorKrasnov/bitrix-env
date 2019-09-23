@@ -17,9 +17,6 @@ if [[ ! -d "/opt/webdir" ]]; then
 
   bash -c /opt/bitrix-env.sh
 
-  find /home/bitrix -type d -print0 | xargs -0 chmod 755
-  find /home/bitrix -type f -print0 | xargs -0 chmod 644
-
   # creating sessions paths
   mkdirBitrixFolder /tmp/php_sessions
   mkdirBitrixFolder /tmp/php_sessions/ext_www
@@ -29,6 +26,9 @@ if [[ ! -d "/opt/webdir" ]]; then
   do
     mkdirBitrixFolder "/tmp/php_sessions/ext_www/$FILE_NAME"
   done
+
+  echo "Setting file permissions for /home/bitrix folder..."
+  chown -R bitrix:bitrix /home/bitrix
 fi
 
 # configure XDebug
