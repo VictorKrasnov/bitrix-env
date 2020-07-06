@@ -49,7 +49,13 @@
 
 # Прочее
 
-Подключение x-debug - сейчас в разработке.
+##Подключение x-debug
+
+1. В файле /etc/php.d/15-xdebug.ini в строке xdebug.remote_host меняем на локальный ip адрес.
+1. В контейнере нужно перезапустить апач: 
+    ```bash
+    service httpd restart
+    ```
 
 # Источники
 1. [Денис Бондарь. PhpStorm + Docker + Xdebug](https://blog.denisbondar.com/post/phpstorm_docker_xdebug)
