@@ -34,12 +34,16 @@ fi
 # configure XDebug
 if [[ -e /etc/php.d/15-xdebug.ini.disabled ]]; then
   echo "zend_extension=xdebug.so" >/etc/php.d/15-xdebug.ini
-  # echo "xdebug.remote_autostart=0" >>/etc/php.d/15-xdebug.ini
-  # echo "xdebug.remote_enable=1" >>/etc/php.d/15-xdebug.ini
-  # echo "xdebug.remote_connect_back=0" >>/etc/php.d/15-xdebug.ini
-  # echo "xdebug.idekey=PHPSTORM" >>/etc/php.d/15-xdebug.ini
+  echo "xdebug.remote_autostart=1" >>/etc/php.d/15-xdebug.ini
+  echo "xdebug.remote_enable=1" >>/etc/php.d/15-xdebug.ini
+  echo "xdebug.remote_connect_back=0" >>/etc/php.d/15-xdebug.ini
+  echo "xdebug.idekey=PHPSTORM" >>/etc/php.d/15-xdebug.ini
+  echo "xdebug.remote_host=192.168.1.101" >>/etc/php.d/15-xdebug.ini
+  echo "xdebug.remote_port=9001" >>/etc/php.d/15-xdebug.ini
+  echo "xdebug.remote_log = \"/var/log/xdebug.log\"" >>/etc/php.d/15-xdebug.ini
   rm /etc/php.d/15-xdebug.ini.disabled
   echo "XDebug enabled"
+  service httpd restart
 fi
 
 # configure ru_RU.UTF-8 locale
