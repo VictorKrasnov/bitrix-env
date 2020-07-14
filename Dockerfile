@@ -23,7 +23,7 @@ VOLUME ["/var/lib/mysql"]
 VOLUME ["/root/docker-backup"]
 
 # install packets & env variables
-RUN yum install initscripts wget mc nano ethtool bind-utils php-soap php-bcmath zip unzip composer -y
+RUN yum install initscripts wget mc nano ethtool bind-utils php-soap php-bcmath zip unzip composer telnet -y
 RUN echo "export LC_ALL=en_US.UTF-8" >> /etc/profile
 RUN export LC_ALL=en_US.UTF-8
 
