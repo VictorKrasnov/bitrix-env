@@ -2,4 +2,4 @@
 /mysql
 /ext_www
 /root
-.env
+/.env

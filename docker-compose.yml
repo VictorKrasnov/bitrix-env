@@ -25,6 +25,7 @@ services:
     environment:
       XDEBUG_CONFIG: 'remote_host=192.168.220.1 remote_enable=1'
       PHP_IDE_CONFIG: 'serverName=Docker'
+      DOCKER_HOST_IP: "${DOCKER_HOST_IP}"
     networks:
       - internal
 networks:
