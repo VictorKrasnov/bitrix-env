@@ -8,7 +8,7 @@ function mkdirBitrixFolder {
 }
 
 # install Bitrix-env
-if [[ ! -d "/opt/webdir" ]]; then
+if [[ ! -f "/opt/webdir/bin/bitrix_utils.sh" ]]; then
   echo "Installing Bitrix Environment..."
 
   if [[ -f /root/docker-backup/.my.cnf ]]; then
