@@ -24,6 +24,11 @@
     # Для MacOS:
     sudo apachectl stop
     ```
+1.  Настраиваем файл окружения.
+    ```bash
+    cp .env.dist .env
+    ```
+    Далее редактируем файл .env, указываем там IP-адрес хост-машины в локальной сети, обычно начинается на 192 или 10, найти адрес можно или в настройках сетевой карты в интерфейсе настройки сети в ОС, или выполнив команду `ifconfig | grep 192` или `ifconfig | grep 10`.
 1.  Запускаем контейнер:
     ```bash
     docker-compose up -d
@@ -32,8 +37,7 @@
     ```bash
     docker-compose exec webslon-bitrix-env bash --login
     ```
-    Произойдет запуск установки Bitrix Environment. Процесс может занимать от 10 до 20 минут.
-    Повторный запуск этой же команды приведет к залогиниванию в контейнер и запуску меню Bitrix Environment (повторной установки не произойдет).
+    Произойдет запуск установки Bitrix Environment. Процесс может занимать от 10 до 20 минут. Повторный запуск этой же команды приведет к залогиниванию в контейнер и запуску меню Bitrix Environment (повторной установки не произойдет).
 
 # Полезное
 
@@ -49,11 +53,15 @@
 
 ## Подключение x-debug
 
-1. В файле /etc/php.d/15-xdebug.ini в строке xdebug.remote_host меняем на локальный ip адрес.
-1. В контейнере нужно перезапустить апач: 
-    ```bash
-    service httpd restart
-    ```
+1. Убедиться, что в контейнере в файле /etc/php.d/15-xdebug.ini в строке xdebug.remote_host указан IP-адрес локальной сети хост-машины (вашего компьютера). Например, адрес WiFi или LAN в настройках сети. Этот же адрес если правильно настроили файл .env должен выводиться командой в контейнере:
+   ```bash
+   echo ${DOCKER_HOST_IP}
+   ```
+1. В настройках PhpStorm
+    1. **Preferences | Languages & Frameworks | PHP**: указываем CLI Interpreter PHP 7.
+    1. **Preferences | Languages & Frameworks | PHP | Debug**: в секции XDebug указываем XDebug port = **9001** и ставим все галочки. 
+    1. **Preferences | Languages & Frameworks | PHP | Debug | DBGp Proxy**: IDE Key: **PHPSTORM**, Host: **Ваш IP-адрес локальной сети хост-машины**, Port: **9001**.
+    1. **Preferences | Languages & Frameworks | PHP | Servers**: добавляем сервер, Host указываем Ваш IP-адрес локальной сети хост-машины, ставим галочку Use path mappings и настраиваем пути.
 
 # Источники
 1. [Денис Бондарь. PhpStorm + Docker + Xdebug](https://blog.denisbondar.com/post/phpstorm_docker_xdebug)
