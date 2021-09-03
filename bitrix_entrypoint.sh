@@ -29,6 +29,10 @@ if [[ ! -f "/opt/webdir/bin/bitrix_utils.sh" ]]; then
 
   echo "Setting file permissions for /home/bitrix folder..."
   chown -R bitrix:bitrix /home/bitrix
+
+  # configure libyaml
+  yum install php-yaml
+  echo "libyaml enabled"
 fi
 
 # configure XDebug
