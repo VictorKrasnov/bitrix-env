@@ -1,6 +1,6 @@
 # Deprecated
 
-Проект устарел. Пользуйтесь этим: https://gitlab.com/bitrix-docker/server
+> **Важно!** Проект устарел. Пользуйтесь этим: https://gitlab.com/bitrix-docker/server
 
 ---
 
